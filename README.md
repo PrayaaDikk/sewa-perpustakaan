@@ -50,7 +50,7 @@ web/
 
 ## Cara Menjalankan Unit Testing
 
-Untuk menjalankan pengujian logika bisnis (Phase 4):
+Untuk menjalankan pengujian logika bisnis:
 
 ```bash
 node test.js
