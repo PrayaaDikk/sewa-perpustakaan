@@ -1,0 +1,17 @@
+[
+    {
+        "id_buku": "BK-001",
+        "judul": "Algoritma dan Pemrograman",
+        "harga_per_hari": 5000
+    },
+    {
+        "id_buku": "BK-002",
+        "judul": "Struktur Data C++",
+        "harga_per_hari": 4500
+    },
+    {
+        "id_buku": "BK-003",
+        "judul": "Dasar-Dasar Web HTML/CSS",
+        "harga_per_hari": 3500
+    }
+]

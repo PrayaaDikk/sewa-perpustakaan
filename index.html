@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Hitung Sewa & Denda Perpustakaan</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Navigation Header -->
+        <header class="app-header">
+            <div class="logo-area">
+                <svg class="book-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                </svg>
+                <h1>Perpustakaan Digital</h1>
+            </div>
+            <p class="app-subtitle">Sistem Kalkulator Sewa & Denda Buku</p>
+        </header>
+
+        <!-- Main Content Dashboard -->
+        <main class="dashboard-main">
+            <!-- Form Input Section -->
+            <section class="card form-section" aria-labelledby="form-title">
+                <h2 id="form-title">Form Transaksi Peminjaman</h2>
+                <p class="section-desc">Masukkan ID Buku dan durasi peminjaman untuk menghitung total biaya secara otomatis.</p>
+                
+                <form id="form-hitung" novalidate>
+                    <div class="form-group">
+                        <label for="id-buku">ID Buku</label>
+                        <select id="id-buku" name="id_buku" required>
+                            <option value="" disabled selected>-- Pilih atau Masukkan ID Buku --</option>
+                            <option value="BK-001">BK-001 - Algoritma dan Pemrograman (Rp5.000/hr)</option>
+                            <option value="BK-002">BK-002 - Struktur Data C++ (Rp4.500/hr)</option>
+                            <option value="BK-003">BK-003 - Dasar-Dasar Web HTML/CSS (Rp3.500/hr)</option>
+                        </select>
+                        <small class="error-msg" id="error-id-buku"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="jumlah-hari">Jumlah Hari Pinjam</label>
+                        <input type="number" id="jumlah-hari" name="jumlah_hari" min="1" placeholder="Contoh: 5" required>
+                        <small class="error-msg" id="error-jumlah-hari"></small>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" id="btn-hitung">Hitung Sewa</button>
+                        <button type="reset" class="btn btn-secondary" id="btn-reset">Reset</button>
+                    </div>
+                </form>
+
+                <div id="general-error" class="alert alert-error hidden" role="alert"></div>
+            </section>
+
+            <!-- Result Display Section -->
+            <section class="card result-section" aria-labelledby="result-title">
+                <h2 id="result-title">Rincian Pembayaran</h2>
+                
+                <div id="empty-state" class="empty-state">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    <p>Belum ada kalkulasi. Silakan isi form di samping dan klik <strong>Hitung Sewa</strong>.</p>
+                </div>
+
+                <div id="summary-card" class="summary-card hidden">
+                    <div class="summary-header">
+                        <span class="badge" id="badge-status">Normal</span>
+                        <span class="book-id-tag" id="res-id-buku">BK-001</span>
+                    </div>
+                    
+                    <h3 class="book-title" id="res-judul">Algoritma dan Pemrograman</h3>
+
+                    <div class="summary-details">
+                        <div class="detail-row">
+                            <span>Harga per Hari</span>
+                            <span id="res-harga">Rp 5.000</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Durasi Pinjam</span>
+                            <span id="res-durasi">7 Hari</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Batas Normal</span>
+                            <span>7 Hari</span>
+                        </div>
+                        <div class="detail-row highlight-row">
+                            <span>Hari Terlambat</span>
+                            <span id="res-terlambat">0 Hari</span>
+                        </div>
+                        <div class="detail-row highlight-row">
+                            <span>Biaya Denda (Rp2.000/hr)</span>
+                            <span id="res-denda">Rp 0</span>
+                        </div>
+                    </div>
+
+                    <div class="total-box">
+                        <span class="total-label">Total Bayar</span>
+                        <span class="total-amount" id="res-total">Rp 35.000</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>&copy; 2026 Web Hitung Sewa & Denda Perpustakaan. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="js/app.js" defer></script>
+</body>
+</html>
